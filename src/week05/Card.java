@@ -2,39 +2,39 @@ package week05;
 
 public class Card {
   String name;
-  String field;
+  String suit;
   int value;
   
-  private String getName() {
+  public String getName() {
     return name;
   }
-  private void setName(String name) {
+  public void setName(String name) {
     this.name = name;
   }
-  private String getField() {
-    return field;
+  public String getSuit() {
+    return suit;
   }
-  private void setField(String field) {
-   this.field = field; 
+  public void setSuit(String suit) {
+   this.suit = suit;
   }
-  private int getValue() {
+  public int getValue() {
     return value;
   }
-  private void setValue(int value) {
+  public void setValue(int value) {
     this.value = value;
   }
   
   public Card() {}
   
-  public Card(String name, String field, int value) {
+  public Card(String name, String suit, int value) {
     this.name = name;
-    this.field = field;
+    this.suit = suit;
     this.value = value;
   }
   
   public void describe() {
     System.out.println("Name: " + name);
-    System.out.println("Field: " + field);
+    System.out.println("Suit: " + suit);
     System.out.println("Value: " + value);
   }
 }
