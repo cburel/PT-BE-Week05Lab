@@ -6,19 +6,19 @@ public class Card {
   int value;
   
   private String getName() {
-    return this.name;
+    return name;
   }
   private void setName(String name) {
     this.name = name;
   }
   private String getField() {
-    return this.field;
+    return field;
   }
   private void setField(String field) {
    this.field = field; 
   }
   private int getValue() {
-    return this.value;
+    return value;
   }
   private void setValue(int value) {
     this.value = value;
