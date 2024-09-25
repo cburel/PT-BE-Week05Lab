@@ -33,8 +33,6 @@ public class Card {
   }
   
   public void describe() {
-    System.out.println("Name: " + name);
-    System.out.println("Suit: " + suit);
-    System.out.println("Value: " + value);
+    System.out.println(name + " of " + suit + " [" + value + "]" );
   }
 }
