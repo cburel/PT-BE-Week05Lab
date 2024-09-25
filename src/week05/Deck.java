@@ -1,6 +1,7 @@
 package week05;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Deck {
@@ -33,6 +34,15 @@ public class Deck {
     for (Card card: this.cards) {
      card.describe(); 
     }
+  }
+  
+  public void shuffle() {
+    Collections.shuffle(this.cards);
+  }
+  
+  public Card draw() {
+    Card card = this.cards.remove(0);    
+    return card;
   }
   
 }

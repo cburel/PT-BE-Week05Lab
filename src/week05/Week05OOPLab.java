@@ -6,6 +6,11 @@
 //
 package week05;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Week05OOPLab {
 
     // This Lab will give you a basic look at creating an Object Oriented Card Game.  
@@ -81,11 +86,11 @@ public class Week05OOPLab {
         //      Add a shuffle method within the Deck Class
         System.out.println("\nQuestion 3: Deck shuffle() method");
         // Test your method here
-        
+        deck.shuffle();
         
         
         // Call the describe method on the newly shuffled deck.
-
+        deck.describe();
         
         
         
@@ -93,6 +98,8 @@ public class Week05OOPLab {
         //      Add a draw method within the Deck Class
         System.out.println("\nQuestion 4: Deck draw() method");
         // Test your method here
+        Card drawn = deck.draw();
+        drawn.describe();
         
         
         
@@ -111,18 +118,54 @@ public class Week05OOPLab {
         //          and deal the cards out to the "players" in the Map.
         System.out.println("\nQuestion 5: Create Game");
         // Call your method here
-
+        Map<String, List<Card>> gameBoard = new HashMap<>();
+        int players = 4;
+        gameBoard = createGame(players);
         
-        
-        
-        
-        
-        
+        System.out.println("-----------------------------");
+        for (int i = 1; i <= players; i++) {
+          String playerName = "Player " + i;
+          System.out.println(playerName + "\n-----------");
+          List<Card> playerCards = gameBoard.get(playerName);
+          for (Card cardInHand : playerCards) {
+            cardInHand.describe();
+          }
+          System.out.println("-----------------------------");
+        }
         
     } 
     
     // Method 5:
-    
+    public static Map<String, List<Card>> createGame(int players){
+      Map<String, List<Card>> gameBoard = new HashMap<>();
+      Deck deck = new Deck();
+      deck.shuffle();
+      
+      for (int i = 1; i <= players; i++) {
+        List<Card> playerCards = new ArrayList<>();
+        String playerName = "Player " + i;
+        gameBoard.put(playerName, playerCards);
+      }
+      
+      for (int i = 0; i < 52 / players; i++) {
+        for (int j = 1; j <= players; j++) {
+          String playerName = "Player " + j;
+          List<Card> playerCards = gameBoard.get(playerName);
+          playerCards.add(deck.draw());
+          gameBoard.replace(playerName, playerCards);
+        }
+      }
+      
+      if(52 % players != 0) {
+        System.out.println("with " + players + " players -- ");
+        System.out.println("Cards left in deck: " + 52 % players);
+      }
+      else {
+        System.out.println("All cards have been dealt.");
+      }
+      
+      return gameBoard;
+    }
     
     
     
